@@ -9,12 +9,13 @@ class Player{
 private:
     std::string name;
     int sinkedShips;
-    Ship ships[NUM_SHIPS];
+public:
     Square selfGrid[GRID_SIZE][GRID_SIZE];
     Square enemyGrid[GRID_SIZE][GRID_SIZE];
 
 public:
     /* Constructors */
+    Ship ships[NUM_SHIPS];
     Player();
     Player(std::string name, int sinkedShips);
     ~Player() = default;
@@ -26,10 +27,12 @@ public:
     void setSinkedShips(int sinkedShips);
 
     /* Functions */
-    void addShip(int startI, int startJ, int shipLen, char direction, int shipID);
+    bool addShip(int startI, int startJ, int shipLen, char direction, int shipID);
+    void placeShips();
     void showState();
     bool acceptHit(int I, int J);
-    bool guessSquare(int I, int J);
+    void guessSquare(int I, int J);
+    void showShipPlacement();
 };
 
 #endif
